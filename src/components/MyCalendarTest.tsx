@@ -3,7 +3,7 @@ import { PawPrint } from 'lucide-react';
 
 // Define types for our content
 interface BaseContent {
-  type: 'message' | 'song';
+  type: 'message' | 'song' | 'picture';
   content: string;
 }
 
@@ -16,7 +16,13 @@ interface SongContent extends BaseContent {
   link: string;
 }
 
-type DailyContent = MessageContent | SongContent;
+interface PictureContent extends BaseContent {
+  type: 'picture';
+  imageUrl: string;
+  altText?: string;
+}
+
+type DailyContent = MessageContent | SongContent | PictureContent;
 
 // Define the type for our content dictionary
 type ContentDictionary = {
@@ -37,8 +43,10 @@ const MyCalendar = () => {
       link: 'https://open.spotify.com/track/...'
     },
     '2024-12-23': {
-      type: 'message',
-      content: 'I find you quite lovely! 🎄'
+      type: 'picture',
+      content: 'I find you quite lovely! 🎄',
+      imageUrl: '/images/first-date.jpg',
+      altText: 'Picture from our first date'
     },
     '2024-12-24': {
       type: 'message',
@@ -102,7 +110,8 @@ const MyCalendar = () => {
     return (
       <div className="mt-2 p-4 bg-pink-50 rounded-lg">
         <p className="text-lg font-medium">
-          {content.type === 'song' ? '🎵' : '💌'}
+          {content.type === 'song' ? '🎵' : 
+           content.type === 'picture' ? '📷' : '💌'}
         </p>
         <p className="mt-2">{content.content}</p>
         {content.type === 'song' && content.link && (
@@ -114,6 +123,15 @@ const MyCalendar = () => {
           >
             Listen on Spotify
           </a>
+        )}
+        {content.type === 'picture' && (
+          <div className="mt-2">
+            <img 
+              src={content.imageUrl}
+              alt={content.altText || content.content}
+              className="w-full rounded-lg shadow-sm"
+            />
+          </div>
         )}
       </div>
     );
