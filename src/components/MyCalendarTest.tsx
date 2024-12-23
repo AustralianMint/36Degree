@@ -34,19 +34,19 @@ const MyCalendar = () => {
 
   const dailyContent: ContentDictionary = {
     '2024-12-24': {
+      type: 'song',
+      content: 'arsh bacpeht mi gom dost daram',
+      link: 'https://www.youtube.com/watch?v=Tj_zXfdCrEA&t=1s'
+    },
+    '2024-12-25': {
       type: 'picture',
       content: 'A nice picture',
       imageUrl: '/images/IMG_1528.JPG',
       altText: 'Our first lil meetup outside code'
     },
-    '2024-12-25': {
+    '2024-12-26': {
       type: 'message',
       content: 'Merry Christmas! 🎄'
-    },
-    '2024-12-26': {
-      type: 'song',
-      content: 'Our Song - Taylor Swift',
-      link: 'https://open.spotify.com/track/...'
     },
     '2024-12-27': {
       type: 'message',
@@ -128,7 +128,7 @@ const MyCalendar = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Listen on Spotify
+            Listen on YouTube
           </a>
         )}
         {content.type === 'picture' && (
