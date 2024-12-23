@@ -34,19 +34,19 @@ const MyCalendar = () => {
 
   const dailyContent: ContentDictionary = {
     '2024-12-24': {
-      type: 'message',
-      content: 'Merry Christmas! 🎄'
-    },
-    '2024-12-25': {
-      type: 'song',
-      content: 'Our Song - Taylor Swift',
-      link: 'https://open.spotify.com/track/...'
-    },
-    '2024-12-26': {
       type: 'picture',
       content: 'A nice picture',
       imageUrl: '/images/IMG_1528.JPG',
       altText: 'Our first lil meetup outside code'
+    },
+    '2024-12-25': {
+      type: 'message',
+      content: 'Merry Christmas! 🎄'
+    },
+    '2024-12-26': {
+      type: 'song',
+      content: 'Our Song - Taylor Swift',
+      link: 'https://open.spotify.com/track/...'
     },
     '2024-12-27': {
       type: 'message',
@@ -91,9 +91,12 @@ const MyCalendar = () => {
   };
 
   const isDateAvailable = (dateStr: string): boolean => {
-    const today = new Date();
+    const now = new Date();
     const cellDate = new Date(dateStr);
-    return cellDate <= today;
+    // Set both dates to same time for proper date comparison
+    cellDate.setHours(0, 0, 0, 0);
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return cellDate.getTime() <= todayStart.getTime();
   };
 
   const toggleDate = (dateStr: string) => {
@@ -114,7 +117,7 @@ const MyCalendar = () => {
     return (
       <div className="mt-2 p-4 bg-pink-50 rounded-lg">
         <p className="text-lg font-medium">
-          {content.type === 'song' ? '🎵' : 
+          {content.type === 'song' ? '🎵' :
            content.type === 'picture' ? '📷' : '💌'}
         </p>
         <p className="mt-2">{content.content}</p>
@@ -134,7 +137,7 @@ const MyCalendar = () => {
             toggleDate(dateStr);
           }}>
             <div className="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto m-4">
-              <img 
+              <img
                 src={content.imageUrl}
                 alt={content.altText || content.content}
                 className="w-full h-auto rounded-lg shadow-sm"
