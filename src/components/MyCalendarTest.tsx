@@ -33,32 +33,20 @@ const MyCalendar = () => {
   const [openDates, setOpenDates] = useState<Set<string>>(new Set());
 
   const dailyContent: ContentDictionary = {
-    '2024-12-21': {
+    '2024-12-24': {
       type: 'message',
       content: 'Merry Christmas! 🎄'
     },
-    '2024-12-22': {
+    '2024-12-25': {
       type: 'song',
       content: 'Our Song - Taylor Swift',
       link: 'https://open.spotify.com/track/...'
     },
-    '2024-12-23': {
-      type: 'picture',
-      content: 'I find you quite lovely! 🎄',
-      imageUrl: '/images/first-date.jpg',
-      altText: 'Picture from our first date'
-    },
-    '2024-12-24': {
-      type: 'message',
-      content: 'I find you quite lovely! 🎄'
-    },
-    '2024-12-25': {
-      type: 'message',
-      content: 'I find you quite lovely! 🎄'
-    },
     '2024-12-26': {
-      type: 'message',
-      content: 'I find you quite lovely! 🎄'
+      type: 'picture',
+      content: 'A nice picture',
+      imageUrl: '/images/IMG_1528.JPG',
+      altText: 'Our first lil meetup outside code'
     },
     '2024-12-27': {
       type: 'message',
@@ -84,6 +72,22 @@ const MyCalendar = () => {
       type: 'message',
       content: 'I find you quite lovely! 🎄'
     },
+    '2025-01-02': {
+      type: 'message',
+      content: 'I find you quite lovely! 🎄'
+    },
+    '2025-01-02': {
+      type: 'message',
+      content: 'I find you quite lovely! 🎄'
+    },
+    '2025-01-03': {
+      type: 'message',
+      content: 'I find you quite lovely! 🎄'
+    },
+    '2025-01-04': {
+      type: 'message',
+      content: 'I find you quite lovely! 🎄'
+    }
   };
 
   const isDateAvailable = (dateStr: string): boolean => {
@@ -125,12 +129,18 @@ const MyCalendar = () => {
           </a>
         )}
         {content.type === 'picture' && (
-          <div className="mt-2">
-            <img 
-              src={content.imageUrl}
-              alt={content.altText || content.content}
-              className="w-full rounded-lg shadow-sm"
-            />
+          <div className="mt-2 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={(e) => {
+            e.stopPropagation();
+            toggleDate(dateStr);
+          }}>
+            <div className="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto m-4">
+              <img 
+                src={content.imageUrl}
+                alt={content.altText || content.content}
+                className="w-full h-auto rounded-lg shadow-sm"
+              />
+              <p className="mt-2 text-center text-gray-600">{content.altText || content.content}</p>
+            </div>
           </div>
         )}
       </div>
