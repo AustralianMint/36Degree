@@ -40,7 +40,7 @@ const MyCalendar = () => {
     },
     '2024-12-25': {
       type: 'message',
-      content: '“Protection and power are overrated. I think you are very wise to choose happiness and love.” - Uncle Iroh'
+      content: '“Protection and power are overrated. I think you are very wise to choose happiness and love.” - Uncle Iroh (P.s I thought about you a lot today - Thomas)'
     },
     '2024-12-26': {
       type: 'message',
