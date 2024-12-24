@@ -39,18 +39,18 @@ const MyCalendar = () => {
       link: 'https://www.youtube.com/watch?v=Tj_zXfdCrEA&t=1s'
     },
     '2024-12-25': {
+      type: 'message',
+      content: '“Protection and power are overrated. I think you are very wise to choose happiness and love.” - Uncle Iroh'
+    },
+    '2024-12-26': {
+      type: 'message',
+      content: 'I find you quite lovely! 🎄'
+    },
+    '2024-12-27': {
       type: 'picture',
       content: 'A nice picture',
       imageUrl: '/images/IMG_1528.JPG',
       altText: 'Our first lil meetup outside code'
-    },
-    '2024-12-26': {
-      type: 'message',
-      content: 'Merry Christmas! 🎄'
-    },
-    '2024-12-27': {
-      type: 'message',
-      content: 'I find you quite lovely! 🎄'
     },
     '2024-12-28': {
       type: 'message',
